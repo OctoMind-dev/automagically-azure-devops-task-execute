@@ -12,7 +12,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  publish extension:
+  publish-extension:
+    name: Publish Extension
     runs-on: ubuntu-latest
     steps:
       - uses: pnpm/action-setup@v2.2.4
