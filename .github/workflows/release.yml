@@ -1,0 +1,35 @@
+name: Continuous Integration
+
+on:
+  release:
+    types: [ published ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish extension:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: latest
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+          cache-dependency-path: "pnpm-lock.yaml"
+
+      - name: install dependencies
+        run: pnpm install
+
+      - name: install tfx
+        uses: actions/TfxInstaller@v1
+
+      - name: tfx publish
+        run: tfx extension publish --manifest-globs vss-extension.json --share-with octomind-dev -t ${{ secrets.AZURE_PUBLISH_TOKEN }}

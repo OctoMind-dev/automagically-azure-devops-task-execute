@@ -1,0 +1,38 @@
+{
+  "name": "automagically-action-execute",
+  "version": "1.0.0",
+  "private": true,
+  "main": "lib/main.js",
+  "type": "module",
+  "engineStrict": true,
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "lint": "eslint **/*.ts --max-warnings=0",
+    "build": "rimraf ./dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OctoMind-dev/automagically-azure-devops-task-execute.git"
+  },
+  "author": "OctoMind-dev",
+  "license": "MIT",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^4.3.1",
+    "node-fetch": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "@types/q": "^1.5.5",
+    "@typescript-eslint/parser": "^5.59.2",
+    "@vercel/ncc": "^0.36.1",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-github": "^4.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.0.4"
+  }
+}

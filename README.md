@@ -1,6 +1,6 @@
-# automagically-az-execute
+# automagically-azure-devops-execute
 
-This is a Azure DevOps Task to execute automagically.
+This is a Azure DevOps Task to execute your automagically-maintained e2e tests.
 To use this action a token is required. Don't have one? We're here to help.
 
 > drop us a note: contact@octomind.dev 🐙

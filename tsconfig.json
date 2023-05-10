@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "rootDir": ".",
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true
+  },
+  "include": ["automagicallyexecute/**/*.ts"],
+  "exclude": ["node_modules"]
+}
