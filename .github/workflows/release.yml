@@ -33,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: install tfx
-        run: pnpm add -g tfx
+        run: pnpm add -g tfx-cli
 
       - name: tfx publish
         run: tfx extension publish --manifest-globs vss-extension.json --share-with octomind-dev -t ${{ secrets.AZURE_PUBLISH_TOKEN }}

@@ -33,7 +33,7 @@ jobs:
         run: pnpm build
 
       - name: install tfx
-        run: pnpm add -g tfx
+        run: pnpm add -g tfx-cli
 
       - name: tfx build
         run: tfx extension create --manifest-globs vss-extension.json
