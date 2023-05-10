@@ -4,8 +4,8 @@ on:
   #  release:
   #    types: [ published ]
   # TODO revert
-  pull_request:
-    branches: [ main ]
+  push:
+    branches: [ initial-development ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
