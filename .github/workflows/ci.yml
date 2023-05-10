@@ -33,14 +33,14 @@ jobs:
         run: pnpm build
 
       - name: install tfx
-        uses: actions/TfxInstaller@v1
+        run: pnpm add -g tfx
 
       - name: tfx build
         run: tfx extension create --manifest-globs vss-extension.json
 
   lint:
     runs-on: ubuntu-latest
-    name: build task
+    name: linting
     steps:
       - uses: pnpm/action-setup@v2.2.4
         with:
