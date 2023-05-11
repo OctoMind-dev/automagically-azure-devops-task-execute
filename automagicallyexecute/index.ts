@@ -45,4 +45,4 @@ const run = async (): Promise<void> => {
   }
 }
 
-await run()
+void run()
