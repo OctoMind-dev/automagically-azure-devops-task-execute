@@ -47,7 +47,7 @@ jobs:
         # node_module symlinks are broken otherwise https://github.com/microsoft/tfs-cli/issues/265#issuecomment-1037307961
       - name: fix node_module links
         run: rsync --archive --verbose --copy-links ./node_modules/ ./node_modules_cp/ && rm -r ./node_modules/ && mv ./node_modules_cp/ ./node_modules/
-        working-dir: automagicallyexecute
+        working-directory: automagicallyexecute
 
       - name: tfx publish
         run: tfx extension publish --manifest-globs vss-extension.json --share-with octomind-dev -t ${{ secrets.AZURE_PUBLISH_TOKEN }}
