@@ -22,7 +22,7 @@ const run = async (): Promise<void> => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({token, url, context: {source: 'azure'}}),
+      body: JSON.stringify({token, url, context: {source: 'azureDevOps'}}),
       method: 'POST'
     })
 
