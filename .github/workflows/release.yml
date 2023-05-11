@@ -16,38 +16,26 @@ jobs:
     name: Publish Extension
     runs-on: ubuntu-latest
     steps:
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: latest
-
       - name: Checkout
         uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.yaml'
 
       - name: install dependencies
-        run: pnpm install
+        run: npm ci
 
       - name: install tfx
-        run: pnpm add -g tfx-cli
+        run: npm add -g tfx-cli
 
       - name: build
-        run: pnpm build
+        run: npm run build
 
       - name: prune dependencies
-        run: pnpm prune --prod
-
-      - name: move node_modules
-        run: mv node_modules automagicallyexecute/
-
-        # node_module symlinks are broken otherwise https://github.com/microsoft/tfs-cli/issues/265#issuecomment-1037307961
-      - name: fix node_module links
-        run: rsync --archive --verbose --copy-links ./node_modules/ ./node_modules_cp/ && rm -r ./node_modules/ && mv ./node_modules_cp/ ./node_modules/
-        working-directory: automagicallyexecute
+        run: npm prune --omit=dev
 
       - name: tfx publish
         run: tfx extension publish --manifest-globs vss-extension.json --share-with octomind-dev -t ${{ secrets.AZURE_PUBLISH_TOKEN }}

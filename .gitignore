@@ -101,4 +101,6 @@ lib
 
 .idea
 dist
-lib
+
+*.vsix
+.taskkey

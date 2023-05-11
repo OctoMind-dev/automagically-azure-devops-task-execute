@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "automagically-execute-task",
   "name": "octomind automagically execute",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publisher": "octomind",
   "targets": [
     {
@@ -18,7 +18,13 @@
   },
   "files": [
     {
-      "path": "automagicallyexecute"
+      "path": "dist/index.js"
+    },
+    {
+      "path": "node_modules"
+    },
+    {
+      "path": "package.json"
     }
   ],
   "contributions": [

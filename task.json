@@ -9,7 +9,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 6
+    "Patch": 7
   },
   "instanceNameFormat": "Execute Automagically",
   "inputs": [
@@ -30,7 +30,7 @@
   ],
   "execution": {
     "Node16": {
-      "target": "index.mjs"
+      "target": "dist/index.js"
     }
   }
 }

@@ -2,7 +2,7 @@
   "name": "automagically-action-execute",
   "version": "1.0.0",
   "private": true,
-  "main": "lib/main.js",
+  "main": "dist/index.js",
   "type": "module",
   "engineStrict": true,
   "engines": {
