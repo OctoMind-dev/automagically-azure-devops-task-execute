@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2021",
-    "module": "commonjs",
-    "rootDir": ".",
+    "target": "ESNext",
+    "module": "Node16",
+    "rootDir": "automagicallyexecute",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true
   },
-  "include": ["automagicallyexecute/**/*.ts"],
   "exclude": ["node_modules"]
 }
