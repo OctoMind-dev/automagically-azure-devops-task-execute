@@ -19,3 +19,5 @@ To use this action a token is required. Don't have one? We're here to help.
 ## Publishing note
 
 There is currently no way to publish without a personal access token. It currently is relying on [Germandrummer92](https://github.com/Germandrummer92)'s PAT.
+
+You currently need to bump both the task.json AND vss-extension.json versions to publish a new version.
