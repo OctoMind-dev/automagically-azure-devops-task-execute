@@ -1,8 +1,11 @@
 name: Continuous Integration
 
 on:
-  release:
-    types: [ published ]
+  #  release:
+  #    types: [ published ]
+  # TODO revert
+  push:
+    branches: [ initial-development ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
