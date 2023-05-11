@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "eslint **/*.ts --max-warnings=0",
-    "build": "rimraf ./dist && tsc"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

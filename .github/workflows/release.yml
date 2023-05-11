@@ -1,8 +1,11 @@
 name: Continuous Integration
 
 on:
-  release:
-    types: [ published ]
+  #  release:
+  #    types: [ published ]
+  # TODO revert
+  push:
+    branches: [ initial-development ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -24,13 +27,16 @@ jobs:
         with:
           node-version: 16
           cache: 'pnpm'
-          cache-dependency-path: "pnpm-lock.yaml"
+          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: install dependencies
         run: pnpm install
 
       - name: install tfx
         run: pnpm add -g tfx-cli
+
+      - name: build
+        run: pnpm build
 
       - name: tfx publish
         run: tfx extension publish --manifest-globs vss-extension.json --share-with octomind-dev -t ${{ secrets.AZURE_PUBLISH_TOKEN }}
