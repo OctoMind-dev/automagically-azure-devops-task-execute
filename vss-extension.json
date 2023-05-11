@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "automagically-execute-task",
   "name": "octomind automagically execute",
-  "version": "1.0.8",
+  "version": "1.0.15",
   "publisher": "octomind",
   "targets": [
     {
@@ -18,13 +18,7 @@
   },
   "files": [
     {
-      "path": "dist/index.js"
-    },
-    {
-      "path": "node_modules"
-    },
-    {
-      "path": "package.json"
+      "path": "automagicallyexecute"
     }
   ],
   "contributions": [
@@ -33,7 +27,10 @@
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
-      ]
+      ],
+      "properties": {
+        "name": "automagicallyexecute"
+      }
     }
   ]
 }

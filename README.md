@@ -12,7 +12,7 @@ To use this action a token is required. Don't have one? We're here to help.
    deployment of your branch.
 
 ```yml
-- task: automagically-execute@1
+- task: automagicallyexecute@1
   inputs:
     url:
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
