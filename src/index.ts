@@ -36,9 +36,9 @@ const run = async (): Promise<void> => {
     tl.setResult(
       tl.TaskResult.Failed,
       err &&
-      typeof err === 'object' &&
-      'message' in err &&
-      typeof err.message === 'string'
+        typeof err === 'object' &&
+        'message' in err &&
+        typeof err.message === 'string'
         ? `unable to execute automagically: ${err.message}`
         : 'Unknown Error'
     )
