@@ -4,6 +4,8 @@ import fetch from 'node-fetch'
 
 const AUTOMAGICALLY_BASE_URL = 'https://automagically-5vr3ysri3a-ey.a.run.app/'
 
+// The emitted js code MUST be mjs, so the typescript file MUST be .mts
+
 const run = async (): Promise<void> => {
   try {
     const url = tl.getInputRequired('url')
@@ -36,9 +38,9 @@ const run = async (): Promise<void> => {
     tl.setResult(
       tl.TaskResult.Failed,
       err &&
-        typeof err === 'object' &&
-        'message' in err &&
-        typeof err.message === 'string'
+      typeof err === 'object' &&
+      'message' in err &&
+      typeof err.message === 'string'
         ? `unable to execute automagically: ${err.message}`
         : 'Unknown Error'
     )

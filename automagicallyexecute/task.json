@@ -30,7 +30,7 @@
   ],
   "execution": {
     "Node16": {
-      "target": "index.js"
+      "target": "index.mjs"
     }
   }
 }
