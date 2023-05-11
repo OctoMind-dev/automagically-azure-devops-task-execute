@@ -2,6 +2,8 @@ import tl from 'azure-pipelines-task-lib'
 
 import fetch from 'node-fetch'
 
+const AUTOMAGICALLY_BASE_URL = 'https://automagically-5vr3ysri3a-ey.a.run.app/'
+
 const run = async (): Promise<void> => {
   try {
     const url = tl.getInputRequired('url')
@@ -16,16 +18,13 @@ const run = async (): Promise<void> => {
       return
     }
 
-    const response = await fetch(
-      'https://automagically-5vr3ysri3a-ey.a.run.app/api/v1/execute',
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({token, url}),
-        method: 'POST'
-      }
-    )
+    const response = await fetch(`${AUTOMAGICALLY_BASE_URL}/api/v1/execute`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({token, url}),
+      method: 'POST'
+    })
 
     if (!response.ok) {
       // noinspection ExceptionCaughtLocallyJS

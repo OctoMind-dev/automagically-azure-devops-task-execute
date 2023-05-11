@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "automagically-execute-task",
   "name": "octomind automagically execute",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "octomind",
   "targets": [
     {
