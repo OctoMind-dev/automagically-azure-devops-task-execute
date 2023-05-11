@@ -42,7 +42,7 @@ jobs:
         run: pnpm prune --prod
 
       - name: move node_modules
-        run: mv -R node_modules automagicallyexecute/
+        run: mv node_modules automagicallyexecute/
 
         # node_module symlinks are broken otherwise https://github.com/microsoft/tfs-cli/issues/265#issuecomment-1037307961
       - name: fix node_module links
