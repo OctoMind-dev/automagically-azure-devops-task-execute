@@ -13,27 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     name: build task
     steps:
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: latest
-
       - name: Checkout
         uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: install dependencies
-        run: pnpm install
+        run: npm ci
 
       - name: build
-        run: pnpm build
+        run: npm run build
 
       - name: install tfx
-        run: pnpm add -g tfx-cli
+        run: npm add -g tfx-cli
 
       - name: tfx build
         run: tfx extension create --manifest-globs vss-extension.json
@@ -42,21 +38,17 @@ jobs:
     runs-on: ubuntu-latest
     name: linting
     steps:
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: latest
-
       - name: Checkout
         uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: install dependencies
-        run: pnpm install
+        run: npm ci
 
       - name: build
-        run: pnpm lint
+        run: npm run lint
