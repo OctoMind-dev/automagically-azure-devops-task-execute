@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "00039ff0-af50-4550-af77-23422d0f74a2",
+  "name": "automagically-execute",
+  "friendlyName": "Automagically Execute",
+  "description": "This is a Azure DevOps Task to execute your automagically-maintained e2e tests.",
+  "category": "Utility",
+  "author": "OctoMind GmbH",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 17
+  },
+  "instanceNameFormat": "Execute Automagically",
+  "inputs": [
+    {
+      "name": "token",
+      "type": "string",
+      "label": "Your APIKey",
+      "required": true,
+      "helpMarkDown": "APIKey received from octomind"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "label": "Deployment URL",
+      "required": true,
+      "helpMarkDown": "URL to your publicly accessible deployment that will be tested"
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "dist/index.js"
+    }
+  }
+}

@@ -100,3 +100,7 @@ __tests__/runner/*
 lib
 
 .idea
+dist
+
+*.vsix
+.taskkey

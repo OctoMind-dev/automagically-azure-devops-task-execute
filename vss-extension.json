@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 1,
+  "id": "automagically-execute-task",
+  "name": "octomind automagically execute",
+  "version": "1.0.17",
+  "publisher": "octomind",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tools for interacting with octomind. Includes one execute task.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "automagicallyexecute"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "automagically-execute-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "automagicallyexecute"
+      }
+    }
+  ]
+}
