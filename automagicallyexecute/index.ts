@@ -1,4 +1,10 @@
-import { TaskResult, getInputRequired, getVariable, setResult, getEndpointAuthorizationParameter } from 'azure-pipelines-task-lib'
+import {
+  TaskResult,
+  getInputRequired,
+  getVariable,
+  setResult,
+  getEndpointAuthorizationParameter
+} from 'azure-pipelines-task-lib'
 import fetch from 'node-fetch'
 
 const AUTOMAGICALLY_BASE_URL = 'https://automagically-5vr3ysri3a-ey.a.run.app/'
@@ -18,11 +24,17 @@ const run = async (): Promise<void> => {
     }
 
     // https://github.com/microsoft/azure-pipelines-task-lib/issues/579
-    const accessToken = getEndpointAuthorizationParameter("SystemVssConnection", "AccessToken", false);
-    
+    const accessToken = getEndpointAuthorizationParameter(
+      'SystemVssConnection',
+      'AccessToken',
+      false
+    )
+
     // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
-    const collectionUri = getVariable('System.TeamFoundationCollectionUri');
-    const organization = collectionUri ? new URL(collectionUri).pathname.split("/").at(1) : undefined;
+    const collectionUri = getVariable('System.TeamFoundationCollectionUri')
+    const organization = collectionUri
+      ? new URL(collectionUri).pathname.split('/').at(1)
+      : undefined
     const project = getVariable('System.TeamProject')
     const repositoryId = getVariable('Build.Repository.ID')
     const pullRequestId = getVariable('System.PullRequest.PullRequestId')
@@ -40,7 +52,7 @@ const run = async (): Promise<void> => {
           organization,
           project,
           repositoryId,
-          pullRequestId,
+          pullRequestId
         }
       }),
       method: 'POST'
