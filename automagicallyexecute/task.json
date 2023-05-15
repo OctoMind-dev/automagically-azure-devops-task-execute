@@ -8,8 +8,8 @@
   "author": "OctoMind GmbH",
   "version": {
     "Major": 1,
-    "Minor": 0,
-    "Patch": 18
+    "Minor": 1,
+    "Patch": 0
   },
   "instanceNameFormat": "Execute Automagically",
   "inputs": [
