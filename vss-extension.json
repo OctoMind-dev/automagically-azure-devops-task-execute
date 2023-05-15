@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "automagically-execute-task",
   "name": "octomind automagically execute",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "publisher": "octomind",
   "targets": [
     {
@@ -16,6 +16,9 @@
   "icons": {
     "default": "images/extension-icon.png"
   },
+  "scopes": [
+    "vso.threads_full"
+],
   "files": [
     {
       "path": "automagicallyexecute"
