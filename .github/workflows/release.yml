@@ -1,10 +1,8 @@
 name: Continuous Integration
 
 on:
-  pull_request:
-    branches: ['test-context']
-  # release:
-  #   types: [ published ]
+  release:
+    types: [ published ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
