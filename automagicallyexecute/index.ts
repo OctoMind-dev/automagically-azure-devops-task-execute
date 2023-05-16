@@ -1,13 +1,18 @@
 import {
   TaskResult,
   getInputRequired,
+  getInput,
+  debug,
   getVariable,
   setResult,
   getEndpointAuthorizationParameter
 } from 'azure-pipelines-task-lib'
 import fetch from 'node-fetch'
 
-const AUTOMAGICALLY_BASE_URL = 'https://automagically-5vr3ysri3a-ey.a.run.app/'
+const urlDefault = 'https://automagically-5vr3ysri3a-ey.a.run.app/'
+const urlOverride = getInput('automagicallyUrl', false) ?? ''
+const automagicallyUrl = urlOverride.length === 0 ? urlDefault : urlOverride
+const executeUrl = `${automagicallyUrl}/api/v1/execute`
 
 const run = async (): Promise<void> => {
   try {
@@ -23,6 +28,20 @@ const run = async (): Promise<void> => {
       return
     }
 
+    // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
+    const collectionUri = getVariable('System.TeamFoundationCollectionUri')
+
+    const context = {
+      organization: collectionUri
+        ? new URL(collectionUri).pathname.split('/').at(1)
+        : undefined,
+      project: getVariable('System.TeamProject'),
+      repositoryId: getVariable('Build.Repository.ID'),
+      pullRequestId: getVariable('System.PullRequest.PullRequestId')
+    }
+
+    debug(JSON.stringify({executeUrl, context}, null, 2))
+
     // https://github.com/microsoft/azure-pipelines-task-lib/issues/579
     const accessToken = getEndpointAuthorizationParameter(
       'SystemVssConnection',
@@ -30,16 +49,7 @@ const run = async (): Promise<void> => {
       false
     )
 
-    // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
-    const collectionUri = getVariable('System.TeamFoundationCollectionUri')
-    const organization = collectionUri
-      ? new URL(collectionUri).pathname.split('/').at(1)
-      : undefined
-    const project = getVariable('System.TeamProject')
-    const repositoryId = getVariable('Build.Repository.ID')
-    const pullRequestId = getVariable('System.PullRequest.PullRequestId')
-
-    const response = await fetch(`${AUTOMAGICALLY_BASE_URL}/api/v1/execute`, {
+    const response = await fetch(executeUrl, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -49,10 +59,7 @@ const run = async (): Promise<void> => {
         context: {
           source: 'azureDevOps',
           accessToken,
-          organization,
-          project,
-          repositoryId,
-          pullRequestId
+          ...context
         }
       }),
       method: 'POST'
@@ -61,7 +68,9 @@ const run = async (): Promise<void> => {
     if (!response.ok) {
       // noinspection ExceptionCaughtLocallyJS
       throw new Error(
-        `response not ok ${response.status}, body: ${await response.json()}`
+        `response not ok ${response.status}, body: ${JSON.stringify({
+          body: await response.json()
+        })}`
       )
     }
   } catch (err) {
