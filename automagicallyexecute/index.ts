@@ -43,7 +43,9 @@ const run = async (): Promise<void> => {
     if (!context.pullRequestId) {
       setResult(
         TaskResult.Failed,
-        'Make sure you run this task in a PR build validation pipeline, otherwise we cannot comment back the test results'
+        'System.PullRequest.PullRequestId variable not available. ' +
+          'Make sure you run this task in a PR build validation pipeline, ' +
+          'otherwise we cannot comment back the test results'
       )
     }
 
