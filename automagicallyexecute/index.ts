@@ -40,6 +40,15 @@ const run = async (): Promise<void> => {
       pullRequestId: getVariable('System.PullRequest.PullRequestId')
     }
 
+    if (!context.pullRequestId) {
+      setResult(
+        TaskResult.Failed,
+        'System.PullRequest.PullRequestId variable not available. ' +
+          'Make sure you run this task in a PR build validation pipeline, ' +
+          'otherwise we cannot comment back the test results'
+      )
+    }
+
     debug(JSON.stringify({executeUrl, context}, null, 2))
 
     // https://github.com/microsoft/azure-pipelines-task-lib/issues/579
