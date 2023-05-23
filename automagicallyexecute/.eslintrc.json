@@ -11,6 +11,7 @@
   },
   "ignorePatterns": ["node_modules"],
   "rules": {
+    "i18n-text/no-en": "off",
     "@typescript-eslint/no-floating-promises": "warn",
     "prettier/prettier": "warn",
     "no-console": "warn"
