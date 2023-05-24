@@ -9,6 +9,8 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
+  "galleryFlags": [ "Preview" ],
+  "public": true,
   "description": "Tools for interacting with octomind. Includes one execute task.",
   "categories": [
     "Azure Pipelines"
