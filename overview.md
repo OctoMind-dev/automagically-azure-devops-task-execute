@@ -14,16 +14,6 @@ To use this task a token is required. Don't have one? We're here to help.
 ```yml
 - task: automagicallyexecute@1
   inputs:
-    url:
+    url: https://public.url
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
 ```
-
-## Publishing notes
-
-There is currently no way to publish without a personal access token. It currently is relying
-on [Germandrummer92](https://github.com/Germandrummer92)'s PAT.
-You currently need to bump both the task.json AND vss-extension.json versions to publish a new version.
-
-TFX-cli does not support pnpm-style symlink-based node_module symlinks, see
-also: https://github.com/microsoft/tfs-cli/issues/265
-

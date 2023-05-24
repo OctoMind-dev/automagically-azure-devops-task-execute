@@ -9,6 +9,11 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
   "galleryFlags": [ "Preview" ],
   "public": true,
   "description": "Tools for interacting with octomind. Includes one execute task.",
