@@ -9,7 +9,7 @@ import {
 } from 'azure-pipelines-task-lib'
 import fetch from 'node-fetch'
 
-const urlDefault = 'https://automagically-5vr3ysri3a-ey.a.run.app/'
+const urlDefault = 'https://app.octomind.dev/'
 const urlOverride = getInput('automagicallyUrl', false) ?? ''
 const automagicallyUrl = urlOverride.length === 0 ? urlDefault : urlOverride
 const executeUrl = `${automagicallyUrl}/api/v1/execute`
