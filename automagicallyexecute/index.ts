@@ -5,6 +5,7 @@ import {
   debug,
   getVariable,
   setResult,
+  warning,
   getEndpointAuthorizationParameter
 } from 'azure-pipelines-task-lib'
 import fetch from 'node-fetch'
@@ -53,8 +54,7 @@ const run = async (): Promise<void> => {
     }
 
     if (!context.pullRequestId) {
-      setResult(
-        TaskResult.Failed,
+      warning(
         'System.PullRequest.PullRequestId variable not available. ' +
           'Make sure you run this task in a PR build validation pipeline, ' +
           'otherwise we cannot comment back the test results'
