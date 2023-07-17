@@ -5,6 +5,7 @@ import {
   debug,
   getVariable,
   setResult,
+  warning,
   getEndpointAuthorizationParameter
 } from 'azure-pipelines-task-lib'
 import fetch from 'node-fetch'
@@ -37,15 +38,16 @@ const run = async (): Promise<void> => {
         : undefined,
       project: getVariable('System.TeamProject'),
       repositoryId: getVariable('Build.Repository.ID'),
-      pullRequestId: getVariable('System.PullRequest.PullRequestId')
+      pullRequestId: getVariable('System.PullRequest.PullRequestId'),
+      sha: getVariable('Build.SourceVersion'),
+      ref: getVariable('Build.SourceBranch')
     }
 
     if (!context.pullRequestId) {
-      setResult(
-        TaskResult.Failed,
+      warning(
         'System.PullRequest.PullRequestId variable not available. ' +
-          'Make sure you run this task in a PR build validation pipeline, ' +
-          'otherwise we cannot comment back the test results'
+          'Make sure you run this task in a PR build validation pipeline ' +
+          'if you want to see automatic comments with your test results'
       )
     }
 
