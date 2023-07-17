@@ -46,7 +46,7 @@ const run = async (): Promise<void> => {
     if (!context.pullRequestId) {
       warning(
         'System.PullRequest.PullRequestId variable not available. ' +
-          'No PullRequestId available, make sure you run this task in a PR build validation pipeline ' +
+          'Make sure you run this task in a PR build validation pipeline ' +
           'if you want to see automatic comments with your test results'
       )
     }
