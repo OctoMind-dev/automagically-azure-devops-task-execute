@@ -29,16 +29,6 @@ const run = async (): Promise<void> => {
       return
     }
 
-    const sha = getVariable('Build.SourceVersion')
-    if (!sha) {
-      setResult(TaskResult.Failed, 'sha is required')
-    }
-
-    const ref = getVariable('Build.SourceBranch')
-    if (!ref) {
-      setResult(TaskResult.Failed, 'ref is required')
-    }
-
     // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
     const collectionUri = getVariable('System.TeamFoundationCollectionUri')
 
@@ -49,8 +39,8 @@ const run = async (): Promise<void> => {
       project: getVariable('System.TeamProject'),
       repositoryId: getVariable('Build.Repository.ID'),
       pullRequestId: getVariable('System.PullRequest.PullRequestId'),
-      sha,
-      ref
+      sha: getVariable('Build.SourceVersion'),
+      ref: getVariable('Build.SourceBranch')
     }
 
     if (!context.pullRequestId) {
