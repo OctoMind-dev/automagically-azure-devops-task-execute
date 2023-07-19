@@ -13,7 +13,8 @@ import fetch from 'node-fetch'
 const urlDefault = 'https://app.octomind.dev/'
 const urlOverride = getInput('automagicallyUrl', false) ?? ''
 const automagicallyUrl = urlOverride.length === 0 ? urlDefault : urlOverride
-const executeUrl = `${automagicallyUrl}/api/v1/execute`
+const executeUrl = `${automagicallyUrl}/api/v2/execute`
+
 
 const run = async (): Promise<void> => {
   try {
@@ -27,6 +28,12 @@ const run = async (): Promise<void> => {
     if (!token) {
       setResult(TaskResult.Failed, 'token is required')
       return
+    }
+
+    const testTargetId = getInputRequired("testTargetId")
+    if (!testTargetId) {
+      setResult(TaskResult.Failed, 'testTargetId is required');
+      return;
     }
 
     // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
@@ -46,12 +53,12 @@ const run = async (): Promise<void> => {
     if (!context.pullRequestId) {
       warning(
         'System.PullRequest.PullRequestId variable not available. ' +
-          'Make sure you run this task in a PR build validation pipeline ' +
-          'if you want to see automatic comments with your test results'
+        'Make sure you run this task in a PR build validation pipeline ' +
+        'if you want to see automatic comments with your test results'
       )
     }
 
-    debug(JSON.stringify({executeUrl, context}, null, 2))
+    debug(JSON.stringify({ executeUrl, context }, null, 2))
 
     // https://github.com/microsoft/azure-pipelines-task-lib/issues/579
     const accessToken = getEndpointAuthorizationParameter(
@@ -67,6 +74,7 @@ const run = async (): Promise<void> => {
       body: JSON.stringify({
         token,
         url,
+        testTargetId,
         context: {
           source: 'azureDevOps',
           accessToken,

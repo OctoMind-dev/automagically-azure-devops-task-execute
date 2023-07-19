@@ -16,7 +16,12 @@ To use this task a token is required. Don't have one? We're here to help.
   inputs:
     url:
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
+    testTargetId: <your testTargetId that you also get from us>
 ```
+
+## Change Log
+
+- 2023-07-23: Added requirement for setting `testTargetId` to enable v2 API
 
 ## Publishing notes
 
