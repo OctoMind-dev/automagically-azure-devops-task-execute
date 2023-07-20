@@ -7,8 +7,8 @@
   "category": "Utility",
   "author": "OctoMind GmbH",
   "version": {
-    "Major": 1,
-    "Minor": 2,
+    "Major": 2,
+    "Minor": 0,
     "Patch": 0
   },
   "instanceNameFormat": "Execute Automagically",
@@ -26,6 +26,13 @@
       "label": "Deployment URL",
       "required": true,
       "helpMarkDown": "URL to your publicly accessible deployment that will be tested"
+    },
+    {
+      "name": "testTargetId",
+      "type": "string",
+      "label": "Test Target ID",
+      "required": true,
+      "helpMarkDown": "ID for your test target, recevied from us"
     }
   ],
   "execution": {

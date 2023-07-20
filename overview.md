@@ -16,4 +16,5 @@ To use this task a token is required. Don't have one? We're here to help.
   inputs:
     url: https://public.url
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
+    testTargetId: <your testTargetId that you also get from us>
 ```

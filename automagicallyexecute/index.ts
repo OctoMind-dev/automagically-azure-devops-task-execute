@@ -13,7 +13,7 @@ import fetch from 'node-fetch'
 const urlDefault = 'https://app.octomind.dev/'
 const urlOverride = getInput('automagicallyUrl', false) ?? ''
 const automagicallyUrl = urlOverride.length === 0 ? urlDefault : urlOverride
-const executeUrl = `${automagicallyUrl}/api/v1/execute`
+const executeUrl = `${automagicallyUrl}/api/v2/execute`
 
 const run = async (): Promise<void> => {
   try {
@@ -26,6 +26,12 @@ const run = async (): Promise<void> => {
     const token = getInputRequired('token')
     if (!token) {
       setResult(TaskResult.Failed, 'token is required')
+      return
+    }
+
+    const testTargetId = getInputRequired('testTargetId')
+    if (!testTargetId) {
+      setResult(TaskResult.Failed, 'testTargetId is required')
       return
     }
 
@@ -67,6 +73,7 @@ const run = async (): Promise<void> => {
       body: JSON.stringify({
         token,
         url,
+        testTargetId,
         context: {
           source: 'azureDevOps',
           accessToken,
