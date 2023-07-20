@@ -39,4 +39,4 @@ jobs:
         working-directory: "automagicallyexecute/"
 
       - name: tfx publish
-        run: tfx extension publish --manifest-globs vss-extension.json --share-with octomind-dev -t ${{ secrets.AZURE_PUBLISH_TOKEN }}
+        run: tfx extension publish --manifest-globs vss-extension.json -t ${{ secrets.AZURE_PUBLISH_TOKEN }}
