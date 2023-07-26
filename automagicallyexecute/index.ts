@@ -68,10 +68,10 @@ const run = async (): Promise<void> => {
 
     const response = await fetch(executeUrl, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-api-key': token
       },
       body: JSON.stringify({
-        token,
         url,
         testTargetId,
         context: {
