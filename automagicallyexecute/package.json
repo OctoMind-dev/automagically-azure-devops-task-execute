@@ -19,7 +19,7 @@
   "author": "OctoMind-dev",
   "license": "MIT",
   "dependencies": {
-    "azure-pipelines-task-lib": "^4.8.0",
+    "azure-pipelines-task-lib": "^4.8.1",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
