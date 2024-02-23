@@ -3,7 +3,7 @@
 This is a Azure DevOps Task to execute your automagically-maintained e2e tests.
 To use this task a token is required which you can generate in our [octomind app](https://app.octomind.dev).
 
-See the [docs](https://www.octomind.dev/docs) for more details.
+See the [docs](https://octomind.dev/docs) for more details.
 
 > drop us a note: contact@octomind.dev 🐙
 
