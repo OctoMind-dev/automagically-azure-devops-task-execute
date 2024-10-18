@@ -19,11 +19,15 @@ See the [docs](https://octomind.dev/docs) for more details.
     url: <publicly accessible url to your deployment>
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
     testTargetId: <your testTargetId that you also get from us>
+    blocking: <if your pipeline should block until all tests have passed, defaults to false>
 ```
+
+By default the task will run a maximum duration of 2 hours before it will fail with a timeout.
 
 ## Change Log
 
 - 2023-07-23: Added requirement for setting `testTargetId` to enable v2 API
+- 2024-10-18: Added blocking parameter to allow blocking your pipeline until all tests have passed.
 
 ## Publishing notes
 

@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "rootDir": "src",
     "outDir": "dist",
+    "noEmit": true,
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true
   },
   "exclude": [
-    "node_modules", "dist", "tests", "vite.config.mts"
-  ],
+    "node_modules",
+    "dist"
+  ]
 }

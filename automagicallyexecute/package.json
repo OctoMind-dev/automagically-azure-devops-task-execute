@@ -6,11 +6,13 @@
   "type": "module",
   "engineStrict": true,
   "engines": {
-    "node": "16"
+    "node": "20"
   },
   "scripts": {
     "lint": "eslint **/*.ts --max-warnings=0",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
   },
   "repository": {
     "type": "git",
@@ -25,15 +27,17 @@
   "devDependencies": {
     "@types/node": "^22.7.6",
     "@types/q": "^1.5.8",
-    "@typescript-eslint/eslint-plugin": "^7.17.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "@vercel/ncc": "^0.38.2",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.10.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-github": "^5.0.1",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-github": "^5.0.2",
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vite": "^5.4.9",
+    "vitest": "^2.1.3"
   }
 }

@@ -8,8 +8,8 @@
   "author": "OctoMind GmbH",
   "version": {
     "Major": 2,
-    "Minor": 0,
-    "Patch": 2
+    "Minor": 1,
+    "Patch": 0
   },
   "instanceNameFormat": "Execute Automagically",
   "inputs": [
@@ -32,11 +32,18 @@
       "type": "string",
       "label": "Test Target ID",
       "required": true,
-      "helpMarkDown": "ID for your test target, recevied from us"
+      "helpMarkDown": "ID for your test target, received from us"
+    },
+    {
+      "name": "blocking",
+      "type": "boolean",
+      "label": "Blocking",
+      "required": false,
+      "helpMarkDown": "If your pipeline should wait until all tests are green, default is false"
     }
   ],
   "execution": {
-    "Node16": {
+    "Node20_1": {
       "target": "dist/index.js"
     }
   }
