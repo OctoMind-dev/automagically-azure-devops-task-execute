@@ -1,19 +1,39 @@
 {
-  "plugins": ["@typescript-eslint"],
-  "extends": ["plugin:github/recommended"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "plugin:github/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.lint.json"
   },
   "env": {
     "node": true,
     "jest": true
   },
-  "ignorePatterns": ["node_modules"],
+  "ignorePatterns": [
+    "node_modules"
+  ],
   "rules": {
     "i18n-text/no-en": "off",
     "@typescript-eslint/no-floating-promises": "warn",
     "prettier/prettier": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "filenames/match-regex": "off"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
   }
 }

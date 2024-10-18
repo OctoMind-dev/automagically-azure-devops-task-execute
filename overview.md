@@ -1,7 +1,9 @@
 # automagically-azure-devops-execute
 
 This is a Azure DevOps Task to execute your automagically-maintained e2e tests.
-To use this task a token is required. Don't have one? We're here to help.
+To use this task a token is required which you can generate in our [octomind app](https://app.octomind.dev).
+
+See the [docs](https://octomind.dev/docs) for more details.
 
 > drop us a note: contact@octomind.dev 🐙
 
@@ -14,7 +16,23 @@ To use this task a token is required. Don't have one? We're here to help.
 ```yml
 - task: automagicallyexecute@2
   inputs:
-    url: https://public.url
+    url: <publicly accessible url to your deployment>
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
     testTargetId: <your testTargetId that you also get from us>
+    blocking: <if your pipeline should block until all tests have passed, defaults to false>
 ```
+
+## Change Log
+
+- 2023-07-23: Added requirement for setting `testTargetId` to enable v2 API
+- 2024-10-18: Added blocking parameter to allow blocking your pipeline until all tests have passed.
+
+## Publishing notes
+
+There is currently no way to publish without a personal access token. It currently is relying
+on [Germandrummer92](https://github.com/Germandrummer92)'s PAT.
+You currently need to bump both the task.json AND vss-extension.json versions to publish a new version.
+
+TFX-cli does not support pnpm-style symlink-based node_module symlinks, see
+also: https://github.com/microsoft/tfs-cli/issues/265
+
