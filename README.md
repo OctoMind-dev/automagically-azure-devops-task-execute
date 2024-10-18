@@ -22,6 +22,8 @@ See the [docs](https://octomind.dev/docs) for more details.
     blocking: <if your pipeline should block until all tests have passed, defaults to false>
 ```
 
+By default the task will run a maximum duration of 2 hours before it will fail with a timeout.
+
 ## Change Log
 
 - 2023-07-23: Added requirement for setting `testTargetId` to enable v2 API
