@@ -25,6 +25,30 @@ describe(executeAutomagically.name, () => {
     )
   })
 
+  it('includes environment name if defined', async () => {
+    const environmentName = 'staging'
+    vi.mocked(getInput).mockReturnValue(environmentName)
+
+    await executeAutomagically()
+
+    expect(fetchJson).toHaveBeenCalledWith(
+      expect.objectContaining({
+        method: 'POST'
+      })
+    )
+
+    const sentBody = JSON.parse(
+      vi.mocked(fetchJson).mock.calls[0][0].body as string
+    )
+
+    expect(sentBody).toEqual(
+      expect.objectContaining({
+        environmentName
+      })
+    )
+    expect(getInput).toHaveBeenCalledWith('environmentName')
+  })
+
   it("executes and DOESN'T wait if it's not blocking", async () => {
     await executeAutomagically()
 
@@ -65,7 +89,7 @@ describe(executeAutomagically.name, () => {
         method: 'POST'
       })
     )
-    expect(fetchJson).toHaveBeenCalledTimes(5)
+    expect(fetchJson).toHaveBeenCalledTimes(4)
   })
 
   it('sets to failed if a request throws', async () => {
