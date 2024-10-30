@@ -40,6 +40,13 @@
       "label": "Blocking",
       "required": false,
       "helpMarkDown": "If your pipeline should wait until all tests are green, default is false"
+    },
+    {
+      "name": "environmentName",
+      "type": "string",
+      "label": "Environment Name",
+      "required": false,
+      "helpMarkDown": "Optional, which environment your tests should be executed against, will use the 'default' environment if not defined "
     }
   ],
   "execution": {
