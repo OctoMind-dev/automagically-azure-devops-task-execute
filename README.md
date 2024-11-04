@@ -20,7 +20,7 @@ See the [docs](https://octomind.dev/docs) for more details.
     token: ${{ secrets.AUTOMAGICALLY_TOKEN }}
     testTargetId: <your testTargetId that you also get from us>
     environmentName: <environment name> that you want your test cases should run against. optional, 
-                     will use the "default" environment otherwise.
+                     will use the "default" environment otherwise.>
     blocking: <if your pipeline should block until all tests have passed, optional, defaults to false>
 ```
 
