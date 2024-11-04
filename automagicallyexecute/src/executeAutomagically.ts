@@ -38,22 +38,9 @@ export const executeAutomagically = async ({
   maximumPollingTimeInMilliseconds?: number
 } = {}): Promise<void> => {
   const url = getInputRequired('url')
-  if (!url) {
-    setResult(TaskResult.Failed, 'URL is required')
-    return
-  }
-
   const token = getInputRequired('token')
-  if (!token) {
-    setResult(TaskResult.Failed, 'token is required')
-    return
-  }
-
   const testTargetId = getInputRequired('testTargetId')
-  if (!testTargetId) {
-    setResult(TaskResult.Failed, 'testTargetId is required')
-    return
-  }
+  const environmentName = getInput('environmentName')
 
   const blocking = getBoolInput('blocking')
   // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
@@ -101,6 +88,7 @@ export const executeAutomagically = async ({
       body: JSON.stringify({
         url,
         testTargetId,
+        environmentName,
         context: {
           source: 'azureDevOps',
           accessToken,
