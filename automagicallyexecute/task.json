@@ -47,6 +47,13 @@
       "label": "Environment Name",
       "required": false,
       "helpMarkDown": "(Optional) which environment your tests should be executed against. Will use the 'default' environment if not defined"
+    },
+    {
+      "name": "variablesToOverwrite",
+      "type": "string",
+      "label": "Variables to Overwrite",
+      "required": false,
+      "helpMarkDown": "(Optional) Variable values to use for this test run. Format: KEY1:value1\nKEY2:value2"
     }
   ],
   "execution": {
