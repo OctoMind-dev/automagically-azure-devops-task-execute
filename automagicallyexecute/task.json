@@ -47,6 +47,13 @@
       "label": "Environment Name",
       "required": false,
       "helpMarkDown": "(Optional) which environment your tests should be executed against. Will use the 'default' environment if not defined"
+    },
+    {
+      "name": "tags",
+      "type": "multiLine",
+      "label": "tags",
+      "required": false,
+      "helpMarkDown": "(Optional) we will only execute test cases that have at least one matching tag"
     }
   ],
   "execution": {
