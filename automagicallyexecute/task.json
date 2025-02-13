@@ -50,7 +50,7 @@
     },
     {
       "name": "variablesToOverwrite",
-      "type": "string",
+      "type": "multiLine",
       "label": "Variables to Overwrite",
       "required": false,
       "helpMarkDown": "(Optional) Variable values to use for this test run. Format: KEY1:value1\nKEY2:value2"
