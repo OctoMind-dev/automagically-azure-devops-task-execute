@@ -4,6 +4,7 @@ import {ExecuteResponse, TestReport} from './types.js'
 import {
   debug,
   getBoolInput,
+  getDelimitedInput,
   getEndpointAuthorizationParameter,
   getInput,
   getInputRequired,
@@ -30,6 +31,18 @@ const getTestReportApiUrl = (
 ) =>
   `${automagicallyUrl}/api/apiKey/v2/test-targets/${testTargetId}/test-reports/${testReportId}`
 
+const multilineMappingToObject = (
+  input: string[]
+): Record<string, string[]> => {
+  const keySplitOff = input
+    .filter(mapping => mapping.length > 0)
+    .map(mapping => mapping.split(':'))
+    // the api takes an array of values per key, so we just wrap the value in an array
+    // then we join with ':' to make it a string again and preserve colons in the value
+    .map(parts => [parts[0], [parts.slice(1).join(':')]])
+  return Object.fromEntries(keySplitOff)
+}
+
 export const executeAutomagically = async ({
   pollingIntervalInMilliseconds = TIME_BETWEEN_POLLS_MILLISECONDS,
   maximumPollingTimeInMilliseconds = MAXIMUM_POLL_TIME_MILLISECONDS
@@ -41,6 +54,11 @@ export const executeAutomagically = async ({
   const token = getInputRequired('token')
   const testTargetId = getInputRequired('testTargetId')
   const environmentName = getInput('environmentName')
+
+  const variablesToOverwrite = getDelimitedInput('variablesToOverwrite', '\n')
+  const variablesToOverwriteObject = variablesToOverwrite
+    ? multilineMappingToObject(variablesToOverwrite)
+    : undefined
 
   const blocking = getBoolInput('blocking')
   // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
@@ -89,6 +107,7 @@ export const executeAutomagically = async ({
         url,
         testTargetId,
         environmentName,
+        variablesToOverwrite: variablesToOverwriteObject,
         context: {
           source: 'azureDevOps',
           accessToken,
