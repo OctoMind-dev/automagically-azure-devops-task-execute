@@ -33,7 +33,7 @@ By default the task will run a maximum duration of 2 hours before it will fail w
 - 2024-10-18: Added blocking parameter to allow blocking your pipeline until all tests have passed.
 - 2024-10-30: Added environment name parameter to allow running your tests against a specified environment, uses the
   default environment if not specified.
-- 2025-02-12: Added tags parameter, we will only execute test cases that have at least one matching tag.
+- 2025-02-19: Added tags parameter, we will only execute test cases that have at least one matching tag.
 
 ## Publishing notes
 
