@@ -22,7 +22,7 @@ See the [docs](https://octomind.dev/docs) for more details.
     environmentName: <environment name that your test cases should run against. optional, 
                      will use the "default" environment otherwise.>
     blocking: <if your pipeline should block until all tests have passed, optional, defaults to false>
-    tags: <if only a subset of your tests should be executed use this multiline string>
+    tags: <if only a subset of your tests should be executed use this multiline string, with one tag per line>
 ```
 
 By default the task will run a maximum duration of 2 hours before it will fail with a timeout.

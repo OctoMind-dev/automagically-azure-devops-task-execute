@@ -8,7 +8,7 @@
   "author": "OctoMind GmbH",
   "version": {
     "Major": 2,
-    "Minor": 2,
+    "Minor": 3,
     "Patch": 0
   },
   "instanceNameFormat": "Execute Automagically",
