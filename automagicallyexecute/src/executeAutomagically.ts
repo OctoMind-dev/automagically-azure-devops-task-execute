@@ -6,6 +6,7 @@ import {
   getBoolInput,
   getEndpointAuthorizationParameter,
   getInput,
+  getDelimitedInput,
   getInputRequired,
   getVariable,
   setResult,
@@ -41,6 +42,7 @@ export const executeAutomagically = async ({
   const token = getInputRequired('token')
   const testTargetId = getInputRequired('testTargetId')
   const environmentName = getInput('environmentName')
+  const tags = getDelimitedInput('tags', '\n')
 
   const blocking = getBoolInput('blocking')
   // https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables
@@ -89,6 +91,7 @@ export const executeAutomagically = async ({
         url,
         testTargetId,
         environmentName,
+        tags,
         context: {
           source: 'azureDevOps',
           accessToken,
