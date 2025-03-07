@@ -54,6 +54,7 @@ export const executeAutomagically = async ({
   const token = getInputRequired('token')
   const testTargetId = getInputRequired('testTargetId')
   const environmentName = getInput('environmentName')
+  const tags = getDelimitedInput('tags', '\n')
 
   const variablesToOverwrite = getDelimitedInput('variablesToOverwrite', '\n')
   const variablesToOverwriteObject = variablesToOverwrite
@@ -108,6 +109,7 @@ export const executeAutomagically = async ({
         testTargetId,
         environmentName,
         variablesToOverwrite: variablesToOverwriteObject,
+        tags,
         context: {
           source: 'azureDevOps',
           accessToken,
