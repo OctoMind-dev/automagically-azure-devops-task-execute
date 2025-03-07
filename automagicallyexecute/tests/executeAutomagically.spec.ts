@@ -3,6 +3,7 @@ import {beforeEach, describe, expect, it, vi} from 'vitest'
 import {fetchJson} from '../src/fetchJson'
 import {
   getBoolInput,
+  getDelimitedInput,
   getEndpointAuthorizationParameter,
   getInput,
   getInputRequired,
@@ -47,6 +48,33 @@ describe(executeAutomagically.name, () => {
       })
     )
     expect(getInput).toHaveBeenCalledWith('environmentName')
+  })
+
+  it('includes variablesToOverwrite name if defined and preserves colons in the values', async () => {
+    const variablesToOverwrite = ['key1:value1', 'key2:value:2']
+    vi.mocked(getDelimitedInput).mockReturnValue(variablesToOverwrite)
+
+    await executeAutomagically()
+
+    expect(fetchJson).toHaveBeenCalledWith(
+      expect.objectContaining({
+        method: 'POST'
+      })
+    )
+
+    const sentBody = JSON.parse(
+      vi.mocked(fetchJson).mock.calls[0][0].body as string
+    )
+
+    expect(sentBody).toEqual(
+      expect.objectContaining({
+        variablesToOverwrite: {
+          key1: ['value1'],
+          key2: ['value:2']
+        }
+      })
+    )
+    expect(getDelimitedInput).toHaveBeenCalledWith('variablesToOverwrite', '\n')
   })
 
   it("executes and DOESN'T wait if it's not blocking", async () => {
