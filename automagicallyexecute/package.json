@@ -33,7 +33,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-github": "^5.1.8",
-    "eslint-plugin-prettier": "^5.5.0",
+    "eslint-plugin-prettier": "^5.5.1",
     "prettier": "^3.6.1",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3",
