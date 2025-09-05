@@ -14,7 +14,7 @@ jobs:
     name: build task
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - uses: actions/setup-node@v5
         with:
@@ -45,7 +45,7 @@ jobs:
     name: linting
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - uses: actions/setup-node@v5
         with:
@@ -66,7 +66,7 @@ jobs:
     name: testing
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - uses: actions/setup-node@v5
         with:
