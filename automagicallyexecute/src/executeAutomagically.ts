@@ -54,6 +54,8 @@ export const executeAutomagically = async ({
   const token = getInputRequired('token')
   const testTargetId = getInputRequired('testTargetId')
   const environmentName = getInput('environmentName')
+  const browser = getInput('browser')
+  const breakpoint = getInput('breakpoint')
   const tags = getDelimitedInput('tags', '\n')
 
   const variablesToOverwrite = getDelimitedInput('variablesToOverwrite', '\n')
@@ -106,6 +108,8 @@ export const executeAutomagically = async ({
       token,
       body: JSON.stringify({
         url,
+        browser,
+        breakpoint,
         testTargetId,
         environmentName,
         variablesToOverwrite: variablesToOverwriteObject,
