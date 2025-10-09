@@ -22,14 +22,14 @@ const sleep = (timeInMilliseconds: number): Promise<void> =>
   new Promise(resolve => setTimeout(resolve, timeInMilliseconds))
 
 const getExecuteUrl = (automagicallyUrl: string) =>
-  `${automagicallyUrl}/api/apiKey/v2/execute`
+  `${automagicallyUrl}/api/apiKey/v3/execute`
 
 const getTestReportApiUrl = (
   automagicallyUrl: string,
   testTargetId: string,
   testReportId: string
 ) =>
-  `${automagicallyUrl}/api/apiKey/v2/test-targets/${testTargetId}/test-reports/${testReportId}`
+  `${automagicallyUrl}/api/apiKey/v3/test-targets/${testTargetId}/test-reports/${testReportId}`
 
 const multilineMappingToObject = (
   input: string[]
